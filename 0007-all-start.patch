@@ -1,0 +1,35 @@
+commit 1af9a2ce6f1ebb15a43439c7c438b59d69568fd5
+Author: Andy Grover <agrover@redhat.com>
+Date:   Wed Nov 2 14:46:39 2011 -0700
+
+    append all start scripts into /etc/target/all_start.sh
+    
+    This should make systemd packaging a little easier.
+    
+    Signed-off-by: Andy Grover <agrover@redhat.com>
+
+diff --git a/targetcli/ui_root.py b/targetcli/ui_root.py
+index 2048544..b3f78c4 100644
+--- a/targetcli/ui_root.py
++++ b/targetcli/ui_root.py
+@@ -89,6 +89,20 @@ class UIRoot(UINode):
+         else:
+             self.shell.log.warning("Aborted, configuration left untouched.")
+ 
++        # append all into single script
++        from glob import iglob
++        import os
++        import shutil
++        sources = iglob(os.path.join("/etc/target", '*_start.sh'))
++        # ensure tcm_start is appended first
++        sources = [x for x in sources if not 'tcm_' in x]
++        sources = [x for x in sources if not 'all_' in x]
++        sources.insert(0, '/etc/target/tcm_start.sh')
++        dest = open('/etc/target/all_start.sh', 'wb')
++        for filename in sources:
++            shutil.copyfileobj(open(filename, 'rb'), dest)
++        dest.close()
++
+     def ui_command_version(self):
+         '''
+         Displays the targetcli and support libraries versions.

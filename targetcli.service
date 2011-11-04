@@ -1,0 +1,13 @@
+[Unit]
+Description=Loads LIO kernel target saved configuration
+Requires=sys-kernel-config.mount
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=-/bin/sh /etc/target/all_start.sh
+SyslogIdentifier=targetcli
+
+[Install]
+WantedBy=multi-user.target
+

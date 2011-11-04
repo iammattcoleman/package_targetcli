@@ -1,0 +1,26 @@
+From 8f6fb804f7bf68bafa4799fb821882bd97e777c8 Mon Sep 17 00:00:00 2001
+From: Andy Grover <agrover@redhat.com>
+Date: Mon, 1 Aug 2011 14:40:12 -0700
+Subject: [PATCH 4/6] ignore errors from failure to set device attributes
+
+Signed-off-by: Andy Grover <agrover@redhat.com>
+---
+ targetcli/tcm_dump.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/targetcli/tcm_dump.py b/targetcli/tcm_dump.py
+index 1b76b62..abfd592 100644
+--- a/targetcli/tcm_dump.py
++++ b/targetcli/tcm_dump.py
+@@ -211,7 +211,7 @@ def tcm_dump_configfs(option, opt_str, value, parser):
+ 				attrib_file = dev_attrib_root + h
+ 				p = os.open(attrib_file, 0)
+ 				value = os.read(p, 8)
+-				print "echo " + value.rstrip() + " > " + attrib_file
++				print "echo " + value.rstrip() + " > " + attrib_file + " 2>/dev/null"
+ 				os.close(p)
+ 
+ 			# Dump snapshot attributes
+-- 
+1.7.1
+
