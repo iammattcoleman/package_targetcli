@@ -52,7 +52,6 @@ gzip --stdout targetcli.8 > targetcli.8.gz
 %install
 rm -rf %{buildroot}
 %{__python} setup.py install --skip-build --root %{buildroot}
-mkdir -p %{buildroot}%{_sysconfdir}/rc.d/init.d
 mkdir -p %{buildroot}%{_sysconfdir}/target/backup
 mkdir -p %{buildroot}%{_mandir}/man8/
 mkdir -p %{buildroot}%{_unitdir}
