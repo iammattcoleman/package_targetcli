@@ -3,7 +3,7 @@ License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
 Version:        1.99.2.gitb03ec79
-Release:        3%{?dist}
+Release:        4%{?dist}
 # placeholder URL and source entries
 # archive created using:
 # git clone git://risingtidesystems.com/targetcli.git
@@ -77,6 +77,9 @@ fi
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Mon Nov 21 2011 Andy Grover <agrover@redhat.com> - 1.99.2.gitb03ec79-4
+- Update doc patch to include iscsi tutorial
+
 * Wed Nov 2 2011 Andy Grover <agrover@redhat.com> - 1.99.2.gitb03ec79-3
 - Add buildrequires for systemd-units
 - use _unitdir

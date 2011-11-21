@@ -1,22 +1,22 @@
-From 705561247e8397dd5c1c33269ad6f7c79c639713 Mon Sep 17 00:00:00 2001
+From 163c6d070b1b5f53327bf760b54b75c18d5c19cc Mon Sep 17 00:00:00 2001
 From: Andy Grover <agrover@redhat.com>
-Date: Tue, 20 Sep 2011 11:27:59 -0700
-Subject: [PATCH 6/6] add docs
+Date: Mon, 21 Nov 2011 14:54:41 -0800
+Subject: [PATCH 6/8] add docs
 
 add a man page.
 
 Signed-off-by: Andy Grover <agrover@redhat.com>
 ---
- targetcli.8 |  152 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 files changed, 152 insertions(+), 0 deletions(-)
+ targetcli.8 |  151 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 files changed, 151 insertions(+), 0 deletions(-)
  create mode 100644 targetcli.8
 
 diff --git a/targetcli.8 b/targetcli.8
 new file mode 100644
-index 0000000..d216ca0
+index 0000000..54e26f4
 --- /dev/null
 +++ b/targetcli.8
-@@ -0,0 +1,152 @@
+@@ -0,0 +1,151 @@
 +.TH targetcli 8
 +.SH NAME
 +.B targetcli
@@ -49,7 +49,8 @@ index 0000000..d216ca0
 +arguments.
 +.SH EXAMPLES
 +To export a storage resource, 1) define a storage object using
-+backstore, then 2) export the object via the FCoE network fabric.
++backstore, then 2) export the object via a network fabric, such as
++iSCSI or FCoE.
 +.SS DEFINING A STORAGE OBJECT WITH BACKSTORE
 +.B backstores/fileio0 create disk1 /disks/disk1.img 140M
 +.br
@@ -65,7 +66,7 @@ index 0000000..d216ca0
 +.I iblock
 +for block-device-backed volumes, and
 +.I pscsi
-+for volumes backed by local SCSI devices. Please see the built-in help
++for volumes backed by local SCSI devices. See the built-in help
 +for more details on required parameters.
 +.SS EXPORTING A STORAGE OBJECT VIA FCOE
 +.B tcm_fc/ create 20:00:00:19:99:a8:34:bc
@@ -96,10 +97,9 @@ index 0000000..d216ca0
 +.br
 +Create an ACL (access control list), for defining the resources each
 +initiator may access. The default behavior is to auto-map existing
-+LUNs to the ACL; please see help for more information.
++LUNs to the ACL; see help for more information.
 +.P
 +The LUN should now be accessible via FCoE.
-+.ig
 +.SS EXPORTING A STORAGE OBJECT VIA ISCSI
 +.B iscsi/ create
 +.br
@@ -138,7 +138,6 @@ index 0000000..d216ca0
 +initiator will see as lun2. The default is to give the initiator
 +read/write access; if read-only access was desired, an additional "1"
 +argument would be added to enable write-protect.
-+..
 +.SS OTHER COMMANDS
 +.B saveconfig
 +.br
