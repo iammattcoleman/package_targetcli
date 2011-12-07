@@ -1,30 +1,19 @@
+%global oname targetcli-fb
+
 Name:           targetcli
 License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        1.99.2.gitb03ec79
-Release:        4%{?dist}
-# placeholder URL and source entries
-# archive created using:
-# git clone git://risingtidesystems.com/targetcli.git
-# cd targetcli
-# git archive b03ec79 --prefix targetcli-%{version}/ | gzip > targetcli-%{version}.tar.gz
-URL:            http://www.risingtidesystems.com/git/
-Source:         %{name}-%{version}.tar.gz
+Version:        2.0rc1.fb2
+Release:        1%{?dist}
+URL:            https://github.com/agrover/targetcli-fb
+Source:         https://github.com/agrover/%{oname}/tarball/v%{version}
 Source1:        targetcli.service
-Patch1:         targetcli-git-version.patch
-Patch2:         0001-Remove-ads-from-cli-welcome-msg.-Mention-help-is-ava.patch
-Patch3:         0002-bundle-lio-utils.patch
-Patch4:         0003-Hack.-dump-scripts-aren-t-in-PATH-anymore-so-call-th.patch
-Patch5:         0004-ignore-errors-from-failure-to-set-device-attributes.patch
-Patch6:         0005-fix-spec_root-path.patch
-Patch7:         0006-add-docs.patch
-Patch8:         0007-all-start.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  python-devel python-rtslib python-configshell epydoc
 BuildRequires:  systemd-units
-Requires:       python-rtslib python-configshell
+Requires:       python-rtslib >= 2.1.fb1, python-configshell
 Requires(post): systemd-units
 
 
@@ -35,15 +24,7 @@ users will also need to install and use fcoe-utils.
 
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
+%setup -q -n agrover-%{oname}-091a9a2
 
 %build
 %{__python} setup.py build
@@ -77,6 +58,18 @@ fi
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Tue Dec 6 2011 Andy Grover <agrover@redhat.com> - 2.0rc1.fb2-1
+- New upstream source and release
+- Remove patches:
+  * targetcli-git-version.patch
+  * 0001-Remove-ads-from-cli-welcome-msg.-Mention-help-is-ava.patch
+  * 0002-bundle-lio-utils.patch
+  * 0003-Hack.-dump-scripts-aren-t-in-PATH-anymore-so-call-th.patch
+  * 0004-ignore-errors-from-failure-to-set-device-attributes.patch
+  * 0005-fix-spec_root-path.patch
+  * 0006-add-docs.patch
+  * 0007-all-start.patch
+
 * Mon Nov 21 2011 Andy Grover <agrover@redhat.com> - 1.99.2.gitb03ec79-4
 - Update doc patch to include iscsi tutorial
 
