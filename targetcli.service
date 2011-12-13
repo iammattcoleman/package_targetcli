@@ -5,7 +5,8 @@ Requires=sys-kernel-config.mount
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=-/bin/sh /etc/target/all_start.sh
+ExecStart=/usr/bin/targetcli restoreconfig clear_existing=true
+ExecStop=/usr/bin/targetcli clearconfig confirm=true
 SyslogIdentifier=targetcli
 
 [Install]

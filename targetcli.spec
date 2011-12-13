@@ -4,7 +4,7 @@ Name:           targetcli
 License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.0rc1.fb2
+Version:        2.0rc1.fb3
 Release:        1%{?dist}
 URL:            https://github.com/agrover/targetcli-fb
 Source:         https://github.com/agrover/%{oname}/tarball/v%{version}
@@ -13,7 +13,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  python-devel python-rtslib python-configshell epydoc
 BuildRequires:  systemd-units
-Requires:       python-rtslib >= 2.1.fb1, python-configshell
+Requires:       python-rtslib >= 2.1.fb2, python-configshell
 Requires(post): systemd-units
 
 
@@ -24,7 +24,7 @@ users will also need to install and use fcoe-utils.
 
 
 %prep
-%setup -q -n agrover-%{oname}-091a9a2
+%setup -q -n agrover-%{oname}-8186d2d
 
 %build
 %{__python} setup.py build
@@ -58,6 +58,10 @@ fi
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Tue Dec 13 2011 Andy Grover <agrover@redhat.com> - 2.0rc1.fb3-1
+- New upstream release
+- Fixup service file for new start/stop targetcli commands
+
 * Tue Dec 6 2011 Andy Grover <agrover@redhat.com> - 2.0rc1.fb2-1
 - New upstream source and release
 - Remove patches:
