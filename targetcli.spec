@@ -5,7 +5,7 @@ License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
 Version:        2.0rc1.fb3
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            https://github.com/agrover/targetcli-fb
 Source:         https://github.com/agrover/%{oname}/tarball/v%{version}
 Source1:        targetcli.service
@@ -58,6 +58,9 @@ fi
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Tue Dec 13 2011 Andy Grover <agrover@redhat.com> - 2.0rc1.fb3-2
+- Fix service file to mount configfs before starting targetcli
+
 * Tue Dec 13 2011 Andy Grover <agrover@redhat.com> - 2.0rc1.fb3-1
 - New upstream release
 - Fixup service file for new start/stop targetcli commands

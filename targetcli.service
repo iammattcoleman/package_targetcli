@@ -1,6 +1,7 @@
 [Unit]
 Description=Loads LIO kernel target saved configuration
 Requires=sys-kernel-config.mount
+After=sys-kernel-config.mount
 
 [Service]
 Type=oneshot
