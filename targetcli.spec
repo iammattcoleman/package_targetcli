@@ -5,7 +5,7 @@ License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
 Version:        2.0rc1.fb5
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            https://github.com/agrover/targetcli-fb
 Source:         https://github.com/agrover/%{oname}/tarball/v%{version}
 Source1:        targetcli.service
@@ -58,6 +58,10 @@ fi
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Tue Jan 24 2012 Andy Grover <agrover@redhat.com> - 2.0rc1.fb5-2
+- Update After= in service file to wait for localfs and network
+- Improve description in service file
+
 * Tue Jan 24 2012 Andy Grover <agrover@redhat.com> - 2.0rc1.fb5-1
 - New upstream release
 
