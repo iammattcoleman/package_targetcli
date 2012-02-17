@@ -4,7 +4,7 @@ Name:           targetcli
 License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.0rc1.fb7
+Version:        2.0rc1.fb8
 Release:        1%{?dist}
 URL:            https://github.com/agrover/targetcli-fb
 Source:         https://github.com/agrover/%{oname}/tarball/v%{version}
@@ -24,7 +24,7 @@ users will also need to install and use fcoe-utils.
 
 
 %prep
-%setup -q -n agrover-%{oname}-e9816fe
+%setup -q -n agrover-%{oname}-2db77c5
 
 %build
 %{__python} setup.py build
@@ -58,6 +58,9 @@ fi
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Thu Feb 16 2012 Andy Grover <agrover@redhat.com> - 2.0rc1.fb8-1
+- New upstream release
+
 * Wed Feb 8 2012 Andy Grover <agrover@redhat.com> - 2.0rc1.fb7-1
 - New upstream release
 
