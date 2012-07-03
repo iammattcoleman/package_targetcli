@@ -5,7 +5,7 @@ License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
 Version:        2.0rc1.fb14
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            https://github.com/agrover/targetcli-fb
 Source:         https://github.com/downloads/agrover/%{oname}/%{oname}-%{version}.tar.gz
 Source1:        targetcli.service
@@ -50,14 +50,18 @@ fi
 
 %files
 %defattr(-,root,root,-)
-%{python_sitelib}
+%{python_sitelib}/*
 %{_bindir}/targetcli
 %{_unitdir}/targetcli.service
+%dir %{_sysconfdir}/target
 %dir %{_sysconfdir}/target/backup
 %doc COPYING README
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Thu Jun 28 2012 Andy Grover <agrover@redhat.com> - 2.0rc1.fb14-2
+- Fix %files to claim /etc/target, not claim sitelib
+
 * Thu Jun 28 2012 Andy Grover <agrover@redhat.com> - 2.0rc1.fb14-1
 - New upstream release
 
