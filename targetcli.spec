@@ -4,7 +4,7 @@ Name:           targetcli
 License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.0rc1.fb15
+Version:        2.0rc1.fb16
 Release:        1%{?dist}
 URL:            https://github.com/agrover/targetcli-fb
 Source:         https://github.com/downloads/agrover/%{oname}/%{oname}-%{version}.tar.gz
@@ -13,7 +13,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  python-devel python-rtslib python-configshell epydoc
 BuildRequires:  systemd-units
-Requires:       python-rtslib >= 2.1.fb2, python-configshell
+Requires:       python-rtslib >= 2.1.fb20, python-configshell
 Requires(post): systemd-units
 
 
@@ -59,6 +59,10 @@ fi
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Tue Aug 7 2012 Andy Grover <agrover@redhat.com> - 2.0rc1.fb16-1
+- New upstream release
+- Update rtslib version dependency
+
 * Tue Jul 31 2012 Andy Grover <agrover@redhat.com> - 2.0rc1.fb15-1
 - New upstream release
 
