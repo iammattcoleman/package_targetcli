@@ -4,7 +4,7 @@ Name:           targetcli
 License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.0rc1.fb16
+Version:        2.0rc1.fb17
 Release:        1%{?dist}
 URL:            https://github.com/agrover/targetcli-fb
 Source:         https://github.com/downloads/agrover/%{oname}/%{oname}-%{version}.tar.gz
@@ -59,6 +59,9 @@ fi
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Mon Nov 12 2012 Andy Grover <agrover@redhat.com> - 2.0rc1.fb17-1
+- New upstream release
+
 * Tue Aug 7 2012 Andy Grover <agrover@redhat.com> - 2.0rc1.fb16-1
 - New upstream release
 - Update rtslib version dependency
