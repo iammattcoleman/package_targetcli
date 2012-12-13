@@ -5,7 +5,7 @@ License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
 Version:        2.0rc1.fb17
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            https://github.com/agrover/targetcli-fb
 Source:         https://github.com/downloads/agrover/%{oname}/%{oname}-%{version}.tar.gz
 Source1:        targetcli.service
@@ -14,7 +14,9 @@ BuildArch:      noarch
 BuildRequires:  python-devel python-rtslib python-configshell epydoc
 BuildRequires:  systemd-units
 Requires:       python-rtslib >= 2.1.fb20, python-configshell
-Requires(post): systemd-units
+Requires(post): systemd
+Requires(preun): systemd
+Requires(postun): systemd
 
 
 %description
@@ -43,10 +45,13 @@ install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 rm -rf %{buildroot}
 
 %post
-if [ $1 -eq 1 ] ; then 
-    # Initial installation
-    /bin/systemctl enable targetcli.service >/dev/null 2>&1 || :
-fi
+%systemd_post targetcli.service
+
+%preun
+%systemd_preun targetcli.service
+
+%postun
+%systemd_postun_with_restart targetcli.service
 
 %files
 %defattr(-,root,root,-)
@@ -59,6 +64,9 @@ fi
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Thu Dec 13 2012 Lukáš Nykrýn <lnykryn@redhat.com> - 2.0rc1.fb17-2
+- Scriptlets replaced with new systemd macros (#850335)
+
 * Mon Nov 12 2012 Andy Grover <agrover@redhat.com> - 2.0rc1.fb17-1
 - New upstream release
 
