@@ -4,16 +4,19 @@ Name:           targetcli
 License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.0rc1.fb17
-Release:        2%{?dist}
+Version:        2.0rc1.fb18
+Release:        1%{?dist}
 URL:            https://github.com/agrover/targetcli-fb
-Source:         https://github.com/downloads/agrover/%{oname}/%{oname}-%{version}.tar.gz
+# Acquire with
+# wget --content-disposition https://github.com/agrover/%{oname}/archive/v%{version}.tar.gz
+# and it will save with the name below. Not cool, github.
+Source:         https://github.com/agrover/%{oname}/archive/%{oname}-%{version}.tar.gz
 Source1:        targetcli.service
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  python-devel python-rtslib python-configshell epydoc
 BuildRequires:  systemd-units
-Requires:       python-rtslib >= 2.1.fb20, python-configshell
+Requires:       python-rtslib >= 2.1.fb26, python-configshell, python-ethtool
 Requires(post): systemd
 Requires(preun): systemd
 Requires(postun): systemd
@@ -64,6 +67,11 @@ rm -rf %{buildroot}
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Thu Dec 20 2012 Lukáš Nykrýn <lnykryn@redhat.com> - 2.0rc1.fb18-1
+- New upstream release
+- Add python-ethtool requires
+- Update Source0 to use Github tar-from-tag instead of Downloads
+
 * Thu Dec 13 2012 Lukáš Nykrýn <lnykryn@redhat.com> - 2.0rc1.fb17-2
 - Scriptlets replaced with new systemd macros (#850335)
 
