@@ -4,8 +4,8 @@ Name:           targetcli
 License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.0rc1.fb18
-Release:        2%{?dist}
+Version:        2.0rc1.fb19
+Release:        1%{?dist}
 URL:            https://github.com/agrover/targetcli-fb
 # Acquire with
 # wget --content-disposition https://github.com/agrover/%{oname}/archive/v%{version}.tar.gz
@@ -67,6 +67,9 @@ rm -rf %{buildroot}
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Mon Jan 7 2013 Andy Grover <agrover@redhat.com> - 2.0rc1.fb19-1
+- New upstream release
+
 * Thu Jan 3 2013 Andy Grover <agrover@redhat.com> - 2.0rc1.fb18-2
 - Add python-ethtool BuildRequires
 
