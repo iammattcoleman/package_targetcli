@@ -4,8 +4,8 @@ Name:           targetcli
 License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.0rc1.fb19
-Release:        2%{?dist}
+Version:        2.0.fb20
+Release:        1%{?dist}
 URL:            https://github.com/agrover/targetcli-fb
 # Acquire with
 # wget --content-disposition https://github.com/agrover/%{oname}/archive/v%{version}.tar.gz
@@ -67,6 +67,9 @@ rm -rf %{buildroot}
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Tue Feb 26 2013 Andy Grover <agrover@redhat.com> - 2.0.fb20-1
+- New upstream release
+
 * Fri Feb 15 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.0rc1.fb19-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
