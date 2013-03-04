@@ -4,7 +4,7 @@ Name:           targetcli
 License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.0.fb20
+Version:        2.0.fb21
 Release:        1%{?dist}
 URL:            https://github.com/agrover/targetcli-fb
 # Acquire with
@@ -67,6 +67,9 @@ rm -rf %{buildroot}
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Mon Mar 4 2013 Andy Grover <agrover@redhat.com> - 2.0.fb21-1
+- New upstream release
+
 * Tue Feb 26 2013 Andy Grover <agrover@redhat.com> - 2.0.fb20-1
 - New upstream release
 
