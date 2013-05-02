@@ -4,19 +4,17 @@ Name:           targetcli
 License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.1.fb23
+Version:        2.1.fb24
 Release:        1%{?dist}
-URL:            https://github.com/agrover/targetcli-fb
-# Acquire with
-# wget --content-disposition https://github.com/agrover/%{oname}/archive/v%{version}.tar.gz
-# and it will save with the name below. Not cool, github.
-Source:         https://github.com/agrover/%{oname}/archive/%{oname}-%{version}.tar.gz
+URL:            https://fedorahosted.org/targetcli-fb/
+Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 Source1:        targetcli.service
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
-BuildRequires:  python-devel python-rtslib python-configshell python-ethtool epydoc
+BuildRequires:  python-devel python-configshell python-ethtool epydoc
+BuildRequires:  python-rtslib >= 2.1.fb33
 BuildRequires:  systemd-units
-Requires:       python-rtslib >= 2.1.fb26, python-configshell, python-ethtool
+Requires:       python-rtslib >= 2.1.fb33, python-configshell, python-ethtool
 Requires(post): systemd
 Requires(preun): systemd
 Requires(postun): systemd
@@ -63,10 +61,14 @@ rm -rf %{buildroot}
 %{_unitdir}/targetcli.service
 %dir %{_sysconfdir}/target
 %dir %{_sysconfdir}/target/backup
-%doc COPYING README
+%doc COPYING README.md
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Thu May 2 2013 Andy Grover <agrover@redhat.com> - 2.1.fb24-1
+- New upstream release
+- Update source URL
+
 * Fri Apr 12 2013 Andy Grover <agrover@redhat.com> - 2.1.fb23-1
 - New upstream release
 
