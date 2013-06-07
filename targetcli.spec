@@ -4,7 +4,7 @@ Name:           targetcli
 License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.1.fb25
+Version:        2.1.fb26
 Release:        1%{?dist}
 URL:            https://fedorahosted.org/targetcli-fb/
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
@@ -65,6 +65,9 @@ rm -rf %{buildroot}
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Fri Jun 7 2013 Andy Grover <agrover@redhat.com> - 2.1.fb26-1
+- New upstream release
+
 * Thu May 9 2013 Andy Grover <agrover@redhat.com> - 2.1.fb25-1
 - New upstream release
 
