@@ -1,15 +1,14 @@
 %global oname targetcli-fb
 
 Name:           targetcli
-License:        AGPLv3
+License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.1.fb26
-Release:        2%{?dist}
+Version:        2.1.fb27
+Release:        1%{?dist}
 URL:            https://fedorahosted.org/targetcli-fb/
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 Source1:        targetcli.service
-Patch0:         %{name}-modules-not-loaded.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  python-devel python-configshell python-ethtool epydoc
@@ -29,7 +28,6 @@ users will also need to install and use fcoe-utils.
 
 %prep
 %setup -q -n %{oname}-%{version}
-%patch0 -p1
 
 %build
 %{__python} setup.py build
@@ -67,6 +65,11 @@ rm -rf %{buildroot}
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Tue Jul 23 2013 Andy Grover <agrover@redhat.com> - 2.1.fb27-1
+- New upstream release
+- License now Apache 2.0
+- Remove patch modules-not-loaded.patch
+
 * Mon Jun 18 2013 Andy Grover <agrover@redhat.com> - 2.1.fb26-2
 - Add patch
   * modules-not-loaded.patch
