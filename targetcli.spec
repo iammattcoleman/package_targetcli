@@ -4,7 +4,7 @@ Name:           targetcli
 License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.1.fb29
+Version:        2.1.fb30
 Release:        1%{?dist}
 URL:            https://fedorahosted.org/targetcli-fb/
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
@@ -64,6 +64,9 @@ rm -rf %{buildroot}
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Tue Sep 11 2013 Andy Grover <agrover@redhat.com> - 2.1.fb30-1
+- New upstream version
+
 * Tue Sep 10 2013 Andy Grover <agrover@redhat.com> - 2.1.fb29-1
 - New upstream release
 - Remove no-longer-needed BuildRequires
