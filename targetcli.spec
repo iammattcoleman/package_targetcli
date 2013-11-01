@@ -4,19 +4,13 @@ Name:           targetcli
 License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.1.fb30
+Version:        2.1.fb31
 Release:        1%{?dist}
 URL:            https://fedorahosted.org/targetcli-fb/
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
-Source1:        targetcli.service
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
-BuildRequires:  python-devel
-BuildRequires:  systemd-units
-Requires:       python-rtslib >= 2.1.fb33, python-configshell, python-ethtool
-Requires(post): systemd
-Requires(preun): systemd
-Requires(postun): systemd
+BuildRequires:  python-devel python-setuptools
+Requires:       python-rtslib >= 2.1.fb41, python-configshell, python-ethtool
 
 
 %description
@@ -33,37 +27,25 @@ users will also need to install and use fcoe-utils.
 gzip --stdout targetcli.8 > targetcli.8.gz
 
 %install
-rm -rf %{buildroot}
 %{__python} setup.py install --skip-build --root %{buildroot}
 mkdir -p %{buildroot}%{_sysconfdir}/target/backup
 mkdir -p %{buildroot}%{_mandir}/man8/
-mkdir -p %{buildroot}%{_unitdir}
-install -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/targetcli.service
 install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 
-%clean
-rm -rf %{buildroot}
-
-%post
-%systemd_post targetcli.service
-
-%preun
-%systemd_preun targetcli.service
-
-%postun
-%systemd_postun_with_restart targetcli.service
-
 %files
-%defattr(-,root,root,-)
 %{python_sitelib}/*
 %{_bindir}/targetcli
-%{_unitdir}/targetcli.service
 %dir %{_sysconfdir}/target
 %dir %{_sysconfdir}/target/backup
 %doc COPYING README.md
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Fri Nov 1 2013 Andy Grover <agrover@redhat.com> - 2.1.fb31-1
+- New upstream version
+- Move service handling to python-rtslib
+- Remove old packaging bits: clean, buildroot, defattr
+
 * Tue Sep 11 2013 Andy Grover <agrover@redhat.com> - 2.1.fb30-1
 - New upstream version
 
