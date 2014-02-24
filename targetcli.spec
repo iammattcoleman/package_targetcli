@@ -4,7 +4,7 @@ Name:           targetcli
 License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.1.fb33
+Version:        2.1.fb34
 Release:        1%{?dist}
 URL:            https://fedorahosted.org/targetcli-fb/
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
@@ -41,6 +41,9 @@ install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Mon Feb 24 2014 Andy Grover <agrover@redhat.com> - 2.1.fb34-1
+- New upstream version
+
 * Wed Dec 4 2013 Andy Grover <agrover@redhat.com> - 2.1.fb33-1
 - New upstream version
 
@@ -49,7 +52,7 @@ install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 - Move service handling to python-rtslib
 - Remove old packaging bits: clean, buildroot, defattr
 
-* Tue Sep 11 2013 Andy Grover <agrover@redhat.com> - 2.1.fb30-1
+* Thu Sep 12 2013 Andy Grover <agrover@redhat.com> - 2.1.fb30-1
 - New upstream version
 
 * Tue Sep 10 2013 Andy Grover <agrover@redhat.com> - 2.1.fb29-1
@@ -67,7 +70,7 @@ install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 - License now Apache 2.0
 - Remove patch modules-not-loaded.patch
 
-* Mon Jun 18 2013 Andy Grover <agrover@redhat.com> - 2.1.fb26-2
+* Tue Jun 18 2013 Andy Grover <agrover@redhat.com> - 2.1.fb26-2
 - Add patch
   * modules-not-loaded.patch
 
