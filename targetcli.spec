@@ -5,12 +5,12 @@ License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
 Version:        2.1.fb37
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            https://fedorahosted.org/targetcli-fb/
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  python-devel python-setuptools
-Requires:       python-rtslib >= 2.1.fb41, python-configshell >= 2.1.fb12, python-ethtool
+BuildRequires:  python3-devel, python3-setuptools, python-tools
+Requires:       python3-rtslib, python3-configshell
 
 
 %description
@@ -23,17 +23,18 @@ users will also need to install and use fcoe-utils.
 %setup -q -n %{oname}-%{version}
 
 %build
-%{__python} setup.py build
+2to3 --write --nobackups .
+%{__python3} setup.py build
 gzip --stdout targetcli.8 > targetcli.8.gz
 
 %install
-%{__python} setup.py install --skip-build --root %{buildroot}
+%{__python3} setup.py install --skip-build --root %{buildroot}
 mkdir -p %{buildroot}%{_sysconfdir}/target/backup
 mkdir -p %{buildroot}%{_mandir}/man8/
 install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 
 %files
-%{python_sitelib}/*
+%{python3_sitelib}/*
 %{_bindir}/targetcli
 %dir %{_sysconfdir}/target
 %dir %{_sysconfdir}/target/backup
@@ -41,6 +42,9 @@ install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Thu Nov 13 2014 Andy Grover <agrover@redhat.com> - 2.1.fb37-2
+- Convert to using Python 3 interpreter and libs
+
 * Wed Sep 24 2014 Andy Grover <agrover@redhat.com> - 2.1.fb37-1
 - New upstream version
 
