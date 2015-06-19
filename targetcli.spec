@@ -5,7 +5,7 @@ License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
 Version:        2.1.fb40
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            https://fedorahosted.org/targetcli-fb/
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
@@ -42,6 +42,9 @@ install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Fri Jun 19 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.1.fb40-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Mon Apr 20 2015 Andy Grover <agrover@redhat.com> - 2.1.fb40-1
 - New upstream version
 
