@@ -4,13 +4,13 @@ Name:           targetcli
 License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.1.fb41
-Release:        4%{?dist}
+Version:        2.1.fb42
+Release:        1%{?dist}
 URL:            https://fedorahosted.org/targetcli-fb/
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-devel, python3-setuptools
-Requires:       python3-rtslib, target-restore, python3-configshell, python3-six
+Requires:       python3-rtslib, target-restore, python3-configshell, python3-six, python-dbus
 
 
 %description
@@ -41,6 +41,9 @@ install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Tue Dec 1 2015 Andy Grover <agrover@redhat.com> - 2.1.fb42-1
+- New upstream version
+
 * Tue Nov 10 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.1.fb41-4
 - Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
 
