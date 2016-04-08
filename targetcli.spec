@@ -4,8 +4,8 @@ Name:           targetcli
 License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.1.fb42
-Release:        3%{?dist}
+Version:        2.1.fb43
+Release:        1%{?dist}
 URL:            https://fedorahosted.org/targetcli-fb/
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
@@ -41,6 +41,9 @@ install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Thu Apr 7 2016 Andy Grover <agrover@redhat.com> - 2.1.fb43-1
+- New upstream version
+
 * Tue Feb 23 2016 Andy Grover <agrover@redhat.com> - 2.1.fb42-3
 - Fix #1294337 by adding dep on correct Py3 dbus pkg
 
