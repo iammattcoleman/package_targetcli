@@ -5,7 +5,7 @@ License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
 Version:        2.1.fb43
-Release:        2%{?dist}
+Release:        3%{?dist}
 URL:            https://fedorahosted.org/targetcli-fb/
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
@@ -41,6 +41,9 @@ install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 2.1.fb43-3
+- Rebuild for Python 3.6
+
 * Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.1.fb43-2
 - https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
 
