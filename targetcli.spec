@@ -5,7 +5,7 @@ License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
 Version:        2.1.fb48
-Release:        2%{?dist}
+Release:        3%{?dist}
 URL:            https://fedorahosted.org/targetcli-fb/
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
@@ -41,6 +41,9 @@ install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Fri Feb 09 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 2.1.fb48-3
+- Escape macros in %%changelog
+
 * Wed Jan 31 2018 Andy Grover <agrover@redhat.com> - 2.1.fb48-2
 - Add dep on python3-gobject
 
@@ -200,7 +203,7 @@ install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
 * Thu Jun 28 2012 Andy Grover <agrover@redhat.com> - 2.0rc1.fb14-2
-- Fix %files to claim /etc/target, not claim sitelib
+- Fix %%files to claim /etc/target, not claim sitelib
 
 * Thu Jun 28 2012 Andy Grover <agrover@redhat.com> - 2.0rc1.fb14-1
 - New upstream release
