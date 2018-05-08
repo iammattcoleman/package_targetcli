@@ -5,9 +5,10 @@ License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
 Version:        2.1.fb48
-Release:        3%{?dist}
+Release:        4%{?dist}
 URL:            https://fedorahosted.org/targetcli-fb/
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
+Patch0001:      0001-signed-char.patch
 BuildArch:      noarch
 BuildRequires:  python3-devel, python3-setuptools
 Requires:       python3-rtslib, target-restore, python3-configshell, python3-six, python3-dbus, python3-gobject
@@ -21,6 +22,7 @@ users will also need to install and use fcoe-utils.
 
 %prep
 %setup -q -n %{oname}-%{version}
+%patch1 -p1
 
 %build
 %{__python3} setup.py build
@@ -41,6 +43,9 @@ install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Tue May 8 2018 Andy Grover <agrover@redhat.com> - 2.1.fb48-4
+- Add patch 0001-signed-char.patch
+
 * Fri Feb 09 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 2.1.fb48-3
 - Escape macros in %%changelog
 
