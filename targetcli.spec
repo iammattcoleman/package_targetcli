@@ -4,11 +4,10 @@ Name:           targetcli
 License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
-Version:        2.1.fb48
-Release:        6%{?dist}
-URL:            https://fedorahosted.org/targetcli-fb/
-Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
-Patch0001:      0001-signed-char.patch
+Version:        2.1.fb49
+Release:        1%{?dist}
+URL:            https://github.com/open-iscsi/%{oname}
+Source:         %{url}/archive/v%{version}/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-devel, python3-setuptools
 Requires:       python3-rtslib, target-restore, python3-configshell, python3-six, python3-dbus, python3-gobject
@@ -22,7 +21,6 @@ users will also need to install and use fcoe-utils.
 
 %prep
 %setup -q -n %{oname}-%{version}
-%patch1 -p1
 
 %build
 %{__python3} setup.py build
@@ -43,6 +41,11 @@ install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Wed Oct 10 2018 Andy Grover <agrover@redhat.com> - 2.1.fb49-1
+- New upstream version
+- Fix URL so spectool -g works
+- Remove patch 0001-signed-char.patch
+
 * Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.fb48-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
