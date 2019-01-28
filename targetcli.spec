@@ -2,7 +2,6 @@
 
 Name:           targetcli
 License:        ASL 2.0
-Group:          System Environment/Libraries
 Summary:        An administration shell for storage targets
 Version:        2.1.fb49
 Release:        1%{?dist}
