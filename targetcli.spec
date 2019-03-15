@@ -4,12 +4,13 @@ Name:           targetcli
 License:        ASL 2.0
 Summary:        An administration shell for storage targets
 Version:        2.1.fb49
-Release:        2%{?dist}
+Release:        3%{?dist}
 URL:            https://github.com/open-iscsi/%{oname}
 Source:         %{url}/archive/v%{version}/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-devel, python3-setuptools
-Requires:       python3-rtslib, target-restore, python3-configshell, python3-six, python3-dbus, python3-gobject
+Requires:       python3-rtslib, target-restore, python3-configshell, python3-six, python3-dbus
+Requires:       python3-gobject-base
 
 
 %description
@@ -40,6 +41,9 @@ install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Fri Mar 15 2019 Alan Pevec <apevec AT redhat.com> - 2.1.fb49-3
+- Reduce dep to python3-gobject-base rhbz#1688808
+
 * Sun Feb 03 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.fb49-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
