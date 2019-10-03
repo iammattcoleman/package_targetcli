@@ -4,7 +4,7 @@ Name:           targetcli
 License:        ASL 2.0
 Summary:        An administration shell for storage targets
 Version:        2.1.fb49
-Release:        5%{?dist}
+Release:        6%{?dist}
 URL:            https://github.com/open-iscsi/%{oname}
 Source:         %{url}/archive/v%{version}/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
@@ -41,6 +41,9 @@ install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
 %{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Thu Oct 03 2019 Miro Hrončok <mhroncok@redhat.com> - 2.1.fb49-6
+- Rebuilt for Python 3.8.0rc1 (#1748018)
+
 * Mon Aug 19 2019 Miro Hrončok <mhroncok@redhat.com> - 2.1.fb49-5
 - Rebuilt for Python 3.8
 
