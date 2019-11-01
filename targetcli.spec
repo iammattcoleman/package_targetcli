@@ -4,7 +4,7 @@ Name:           targetcli
 License:        ASL 2.0
 Summary:        An administration shell for storage targets
 Version:        2.1.fb49
-Release:        6%{?dist}
+Release:        7%{?dist}
 URL:            https://github.com/open-iscsi/%{oname}
 Source:         %{url}/archive/v%{version}/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
@@ -23,24 +23,29 @@ users will also need to install and use fcoe-utils.
 %setup -q -n %{oname}-%{version}
 
 %build
-%{__python3} setup.py build
-gzip --stdout targetcli.8 > targetcli.8.gz
+%py3_build
 
 %install
-%{__python3} setup.py install --skip-build --root %{buildroot}
+%py3_install
 mkdir -p %{buildroot}%{_sysconfdir}/target/backup
 mkdir -p %{buildroot}%{_mandir}/man8/
-install -m 644 targetcli.8.gz %{buildroot}%{_mandir}/man8/
+install -m 644 targetcli.8 %{buildroot}%{_mandir}/man8/
 
 %files
-%{python3_sitelib}/*
+%doc README.md
+%license COPYING
+%{python3_sitelib}/targetcli*
 %{_bindir}/targetcli
+%{_mandir}/man8/targetcli.8*
 %dir %{_sysconfdir}/target
 %dir %{_sysconfdir}/target/backup
-%doc COPYING README.md
-%{_mandir}/man8/targetcli.8.gz
 
 %changelog
+* Fri Nov 01 2019 Neal Gompa <ngompa13@gmail.com> - 2.1.fb49-7
+- Use correct Python macros to build the package
+- Fix file list and install COPYING as license file
+- Don't compress manpages in build phase, as rpm auto-compresses manpages
+
 * Thu Oct 03 2019 Miro Hrončok <mhroncok@redhat.com> - 2.1.fb49-6
 - Rebuilt for Python 3.8.0rc1 (#1748018)
 
