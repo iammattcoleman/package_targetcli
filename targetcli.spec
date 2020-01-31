@@ -4,7 +4,7 @@ Name:           targetcli
 License:        ASL 2.0
 Summary:        An administration shell for storage targets
 Version:        2.1.fb49
-Release:        7%{?dist}
+Release:        8%{?dist}
 URL:            https://github.com/open-iscsi/%{oname}
 Source:         %{url}/archive/v%{version}/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
@@ -41,6 +41,9 @@ install -m 644 targetcli.8 %{buildroot}%{_mandir}/man8/
 %dir %{_sysconfdir}/target/backup
 
 %changelog
+* Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.fb49-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
 * Fri Nov 01 2019 Neal Gompa <ngompa13@gmail.com> - 2.1.fb49-7
 - Use correct Python macros to build the package
 - Fix file list and install COPYING as license file
